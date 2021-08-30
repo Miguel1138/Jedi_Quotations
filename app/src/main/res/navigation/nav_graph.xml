@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment_list">
+
+    <fragment
+        android:id="@+id/fragment_list"
+        android:name="com.miguelsantos.jediquotations.ui.fragments.ListFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_list">
+        <action
+            android:id="@+id/action_fragment_list_to_fragment_quotation"
+            app:destination="@id/fragment_quotation" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_quotation"
+        android:name="com.miguelsantos.jediquotations.ui.fragments.QuotationFragment"
+        android:label="@string/quotation_label"
+        tools:layout="@layout/fragment_quotation">
+
+        <argument
+            android:name="quotation"
+            app:argType=".model.Quotation"
+            app:nullable="true" />
+
+    </fragment>
+</navigation>

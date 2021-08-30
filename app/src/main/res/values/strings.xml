@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Jedi Quotations</string>
+    <string name="quotation_label">%1$s once said... </string>
 </resources>
