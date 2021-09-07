@@ -38,7 +38,6 @@ class QuotationAdapter() :
                     it.findNavController().navigate(action)
                 }
             }
-
         }
 
     }

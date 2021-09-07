@@ -1,9 +1,8 @@
 package com.miguelsantos.jediquotations.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.miguelsantos.jediquotations.R
@@ -32,11 +31,42 @@ class QuotationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         bundle?.let {
             (requireActivity() as AppCompatActivity).supportActionBar?.title =
                 getString(R.string.quotation_label, it.quotation?.authorName ?: "")
             binding.fragmentAuthorImage.setImageResource(it.quotation?.authorImage ?: -1)
             binding.fragmentQuotationText.text = it.quotation?.quote
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.share_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_share -> {
+
+                val quote = String.format(
+                    getString(R.string.send_quote),
+                    bundle?.quotation?.authorName,
+                    bundle?.quotation?.quote
+                )
+
+                val intent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    type = "text/plain"
+                    putExtra(Intent.EXTRA_TEXT, quote)
+                }
+
+                if (activity?.packageManager?.resolveActivity(intent, 0) != null) startActivity(
+                    intent
+                )
+
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 

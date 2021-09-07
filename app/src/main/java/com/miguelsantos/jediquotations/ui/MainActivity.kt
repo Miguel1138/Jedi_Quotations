@@ -9,14 +9,12 @@ import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import com.miguelsantos.jediquotations.R
 import com.miguelsantos.jediquotations.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private lateinit var navController: NavController
-    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.main_nav_fragment_host) as NavHostFragment
