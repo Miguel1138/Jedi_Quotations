@@ -1,4 +1,4 @@
-package com.miguelsantos.jediquotations.ui
+package com.miguelsantos.jediquotations.ui.fragments
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,9 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.miguelsantos.jediquotations.data.DataSource
 import com.miguelsantos.jediquotations.databinding.QuotationItemBinding
 import com.miguelsantos.jediquotations.model.Quotation
-import com.miguelsantos.jediquotations.ui.fragments.ListFragmentDirections
 
-class QuotationAdapter() :
+class QuotationAdapter :
     RecyclerView.Adapter<QuotationAdapter.QuotationViewHolder>() {
 
     private val list: MutableList<Quotation> = DataSource().getList()
@@ -24,7 +23,7 @@ class QuotationAdapter() :
 
     override fun getItemCount(): Int = list.size
 
-    inner class QuotationViewHolder(val binding: QuotationItemBinding) :
+    inner class QuotationViewHolder(private val binding: QuotationItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Quotation) {

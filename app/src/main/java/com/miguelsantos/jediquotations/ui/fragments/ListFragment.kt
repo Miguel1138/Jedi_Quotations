@@ -6,14 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.OrientationHelper
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.miguelsantos.jediquotations.R
-import com.miguelsantos.jediquotations.data.DataSource
 import com.miguelsantos.jediquotations.databinding.FragmentListBinding
-import com.miguelsantos.jediquotations.model.Quotation
-import com.miguelsantos.jediquotations.ui.QuotationAdapter
 
 class ListFragment : Fragment() {
 
@@ -25,16 +18,15 @@ class ListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentListBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val recycler: RecyclerView = binding.fragmentListRecycler
-        recycler.adapter = QuotationAdapter()
-        recycler.layoutManager = GridLayoutManager(context, 2)
+        binding.fragmentListRecycler.apply {
+            adapter = QuotationAdapter()
+            layoutManager = GridLayoutManager(context, 2)
+        }
     }
 
 }

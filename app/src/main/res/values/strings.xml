@@ -2,4 +2,6 @@
     <string name="app_name">Jedi Quotations</string>
     <string name="quotation_label">%1$s once said... </string>
     <string name="send_quote">%1$s once  said: \n%2$s</string>
+    <string name="action_create_quote_label">Create  new quote</string>
+    <string name="action_share_label">Share quote</string>
 </resources>

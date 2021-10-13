@@ -40,6 +40,11 @@ class QuotationFragment : Fragment() {
         }
     }
 
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+        menu.findItem(R.id.action_new_quote)?.isVisible = false
+    }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.share_menu, menu)
     }
@@ -47,7 +52,6 @@ class QuotationFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_share -> {
-
                 val quote = String.format(
                     getString(R.string.send_quote),
                     bundle?.quotation?.authorName,
@@ -60,9 +64,8 @@ class QuotationFragment : Fragment() {
                     putExtra(Intent.EXTRA_TEXT, quote)
                 }
 
-                if (activity?.packageManager?.resolveActivity(intent, 0) != null) startActivity(
-                    intent
-                )
+                if (activity?.packageManager?.resolveActivity(intent, 0) != null)
+                    startActivity(intent)
 
                 true
             }
