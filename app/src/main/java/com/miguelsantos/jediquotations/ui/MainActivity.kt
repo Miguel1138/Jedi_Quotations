@@ -3,12 +3,12 @@ package com.miguelsantos.jediquotations.ui
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import com.miguelsantos.jediquotations.R
+import com.miguelsantos.jediquotations.ui.fragments.ListFragmentDirections
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
@@ -33,9 +33,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_new_quote -> {
-                // TODO: 13/10/2021 Implementar tela de criação de frase.
-                Toast.makeText(this, "TODO criar tela de criação de nova frase.", Toast.LENGTH_LONG)
-                    .show()
+                navController.navigate(ListFragmentDirections.actionFragmentListToFragmentNewQuote())
                 true
             }
             else -> super.onOptionsItemSelected(item)

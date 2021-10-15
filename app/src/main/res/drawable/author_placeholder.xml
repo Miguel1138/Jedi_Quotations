@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <padding
+                android:bottom="12dp"
+                android:left="8dp"
+                android:right="8dp"
+                android:top="8dp" />
+            <solid android:color="@color/white" />
+        </shape>
+    </item>
+    <item
+        android:width="4dp"
+        android:height="4dp"
+        android:drawable="@drawable/ic_baseline_add_circle_24"
+        android:gravity="top|end" />
+    <item android:drawable="@drawable/ic_baseline_image_24" />
+</layer-list>

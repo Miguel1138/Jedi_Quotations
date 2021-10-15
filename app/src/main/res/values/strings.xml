@@ -4,4 +4,8 @@
     <string name="send_quote">%1$s once  said: \n%2$s</string>
     <string name="action_create_quote_label">Create  new quote</string>
     <string name="action_share_label">Share quote</string>
+    <string name="label_author_name">Author Name</string>
+    <string name="label_quote">Quote</string>
+    <string name="new_quote_title">Insert your quote</string>
+    <string name="quote_template">\"%s\"</string>
 </resources>

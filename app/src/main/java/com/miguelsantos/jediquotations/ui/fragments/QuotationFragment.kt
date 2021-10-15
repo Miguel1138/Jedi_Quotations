@@ -4,18 +4,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.miguelsantos.jediquotations.R
+import com.miguelsantos.jediquotations.components.AbstractFragment
 import com.miguelsantos.jediquotations.databinding.FragmentQuotationBinding
 
-class QuotationFragment : Fragment() {
+class QuotationFragment : AbstractFragment() {
 
     private var bundle: QuotationFragmentArgs? = null
     private lateinit var binding: FragmentQuotationBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
         bundle = QuotationFragmentArgs.fromBundle(requireArguments())
     }
 
@@ -25,7 +24,6 @@ class QuotationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentQuotationBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
@@ -38,11 +36,6 @@ class QuotationFragment : Fragment() {
             binding.fragmentAuthorImage.setImageResource(it.quotation?.authorImage ?: -1)
             binding.fragmentQuotationText.text = it.quotation?.quote
         }
-    }
-
-    override fun onPrepareOptionsMenu(menu: Menu) {
-        super.onPrepareOptionsMenu(menu)
-        menu.findItem(R.id.action_new_quote)?.isVisible = false
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

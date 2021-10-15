@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_fragment_list_to_fragment_quotation"
             app:destination="@id/fragment_quotation" />
+        <action
+            android:id="@+id/action_fragment_list_to_fragment_new_quote"
+            app:destination="@id/fragment_new_quote" />
     </fragment>
 
     <fragment
@@ -25,6 +28,17 @@
             android:name="quotation"
             app:argType=".model.Quotation"
             app:nullable="true" />
-
     </fragment>
+
+    <fragment
+        android:id="@+id/fragment_new_quote"
+        android:name="com.miguelsantos.jediquotations.ui.fragments.CreateNewQuoteFragment"
+        android:label="@string/new_quote_title"
+        tools:layout="@layout/fragment_create_new_quote">
+
+        <action
+            android:id="@+id/action_fragment_new_quote_to_fragment_list"
+            app:destination="@id/fragment_list" />
+    </fragment>
+
 </navigation>
