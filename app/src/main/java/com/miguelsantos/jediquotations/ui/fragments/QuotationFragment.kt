@@ -33,7 +33,7 @@ class QuotationFragment : AbstractFragment() {
         bundle?.let {
             (requireActivity() as AppCompatActivity).supportActionBar?.title =
                 getString(R.string.quotation_label, it.quotation?.authorName ?: "")
-            binding.fragmentAuthorImage.setImageResource(it.quotation?.authorImage ?: -1)
+            binding.fragmentAuthorImage.setImageDrawable(it.quotation?.authorImage)
             binding.fragmentQuotationText.text = it.quotation?.quote
         }
     }

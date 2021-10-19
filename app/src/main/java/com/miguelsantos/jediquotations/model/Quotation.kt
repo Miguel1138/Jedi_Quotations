@@ -1,17 +1,17 @@
 package com.miguelsantos.jediquotations.model
 
+import android.graphics.drawable.Drawable
 import android.os.Parcel
 import android.os.Parcelable
-import androidx.annotation.DrawableRes
 
 data class Quotation(
-    @DrawableRes val authorImage: Int,
+    val authorImage: Drawable,
     val quote: String?,
     val authorName: String?
 ) : Parcelable {
 
     constructor(parcel: Parcel) : this(
-        parcel.readInt(),
+        parcel.readValue(ClassLoader.getSystemClassLoader()) as Drawable,
         parcel.readString(),
         parcel.readString()
     )
@@ -19,7 +19,7 @@ data class Quotation(
     override fun describeContents(): Int = 0
 
     override fun writeToParcel(dest: Parcel?, flags: Int) {
-        dest?.writeInt(authorImage)
+        dest?.writeValue(authorImage)
         dest?.writeString(quote)
         dest?.writeString(authorName)
     }
@@ -31,5 +31,6 @@ data class Quotation(
         override fun newArray(size: Int): Array<Quotation?> = arrayOfNulls(size)
 
     }
+
 
 }

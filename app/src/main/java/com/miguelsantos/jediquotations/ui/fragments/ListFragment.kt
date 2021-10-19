@@ -10,7 +10,15 @@ import com.miguelsantos.jediquotations.databinding.FragmentListBinding
 
 class ListFragment : Fragment() {
 
+    private var bundle: ListFragmentArgs? = null
     private lateinit var binding: FragmentListBinding
+    private val quotationAdapter = QuotationAdapter()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // TODO: 19/10/2021 Aplicação está duplicando as citações quando muda de tela
+        bundle = ListFragmentArgs.fromBundle(requireArguments())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,8 +32,13 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.fragmentListRecycler.apply {
-            adapter = QuotationAdapter()
+            adapter = quotationAdapter
             layoutManager = GridLayoutManager(context, 2)
+        }
+
+        // TODO: 19/10/2021 Aplicação está duplicando as citações quando muda de tela
+        bundle?.let {
+            quotationAdapter.addQuote(it.quotation)
         }
     }
 

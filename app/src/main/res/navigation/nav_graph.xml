@@ -16,6 +16,12 @@
         <action
             android:id="@+id/action_fragment_list_to_fragment_new_quote"
             app:destination="@id/fragment_new_quote" />
+
+        <argument
+            android:name="quotation"
+            app:argType=".model.Quotation"
+            app:nullable="true"
+            android:defaultValue="@null"/>
     </fragment>
 
     <fragment

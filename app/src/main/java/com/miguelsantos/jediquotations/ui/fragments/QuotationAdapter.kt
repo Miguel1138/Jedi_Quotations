@@ -23,12 +23,17 @@ class QuotationAdapter :
 
     override fun getItemCount(): Int = list.size
 
+    // Check if the object its nullable before adding to the list.
+    fun addQuote(quotation: Quotation?) {
+        quotation?.let { list.add(it) }
+    }
+
     inner class QuotationViewHolder(private val binding: QuotationItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Quotation) {
             with(binding) {
-                itemAuthorImage.setImageResource(item.authorImage)
+                itemAuthorImage.setImageDrawable(item.authorImage)
                 itemQuotationText.text = item.quote
 
                 itemCardView.setOnClickListener {
