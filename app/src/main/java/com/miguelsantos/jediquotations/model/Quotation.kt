@@ -1,17 +1,17 @@
 package com.miguelsantos.jediquotations.model
 
-import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Parcel
 import android.os.Parcelable
 
 data class Quotation(
-    val authorImage: Drawable,
+    val authorImage: Uri,
     val quote: String?,
     val authorName: String?
 ) : Parcelable {
 
     constructor(parcel: Parcel) : this(
-        parcel.readValue(ClassLoader.getSystemClassLoader()) as Drawable,
+        parcel.readValue(Uri::class.java.classLoader) as Uri,
         parcel.readString(),
         parcel.readString()
     )

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.miguelsantos.jediquotations.R
 import com.miguelsantos.jediquotations.components.AbstractFragment
 import com.miguelsantos.jediquotations.databinding.FragmentQuotationBinding
@@ -33,7 +34,9 @@ class QuotationFragment : AbstractFragment() {
         bundle?.let {
             (requireActivity() as AppCompatActivity).supportActionBar?.title =
                 getString(R.string.quotation_label, it.quotation?.authorName ?: "")
-            binding.fragmentAuthorImage.setImageDrawable(it.quotation?.authorImage)
+            Glide.with(this)
+                .load(it.quotation?.authorImage)
+                .into(binding.fragmentAuthorImage)
             binding.fragmentQuotationText.text = it.quotation?.quote
         }
     }
